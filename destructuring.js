@@ -38,8 +38,6 @@ let = {
 */
 
 function greeting( {firstName, lastName, title} ) {
-  
-  
   // Do not edit the code below.
   return 'Hello, ' + title + ' ' + firstName + ' ' + lastName + '!';
   // Do not edit the code above.
@@ -110,14 +108,14 @@ return smallestValue
 // return Math.min(first, second, third);
 }
 
-function largeNumbers ({first,second,third}){
-  var result = first
-  if(second>result) result = second
-  if (third>r
+// function largeNumbers ({first,second,third}){
+//   var result = first
+//   if (second>result) result = second
+//   if (third>r
 
-function largeNumbers ({first,second,third}){
-  return [first,second third].sort((a,b) => a-b)[0]
-}
+// function largeNumbers ({first,second,third}){
+//   return [first,second,third].sort((a,b) => a-b)[0]
+// }
 
 
 ////////// PROBLEM 6 //////////

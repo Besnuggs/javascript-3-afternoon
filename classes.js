@@ -61,7 +61,9 @@ class Employee {
 */
 
 class Manager {
-  constructor(first_name, last_name, age, email){
+  constructor(first_name, last_name, age, email)
+  
+  {
     this.first_name = first_name;
     this.last_name = last_name;
     this.age = age;
@@ -81,6 +83,7 @@ class Manager {
     this.reports.splice([index],1)
   }
 }
+
 
 var ken = new Manager('ken', 'last', 'email', '20')
 console.log(ken)
@@ -129,8 +132,9 @@ class ProgressiveManager {
   hire (...newEmployee) {
     this.reports.push(newEmployee)
     this.updateTitle()
+  }
 
-  fire(index){
+  fire(index) {
     this.reports.splice([index],1)
     this.bonus += 100;
     this.updateTitle()
