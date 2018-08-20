@@ -29,7 +29,18 @@
   Call your class Employee and receive all the data in the constructor in the order listed above.
 */
 
-//Code Here
+class Employee {
+  constructor(first_name, last_name, email, age){
+    this.first_name = first_name;
+    this.last_name = last_name;
+    this.email = email;
+    this.age = age;
+  }
+
+  makeWidget() {
+    return `${this.first_name} ${this.last_name} Widget`
+  }
+}
 
 
 
@@ -49,8 +60,32 @@
   Call your new class Manager
 */
 
-//Code Here
+class Manager {
+  constructor(first_name, last_name, age, email){
+    this.first_name = first_name;
+    this.last_name = last_name;
+    this.age = age;
+    this.email = email;
+    this.reports = [];
+  }
 
+  makeWidget() {
+    return `${this.first_name} ${this.last_name} Widget`
+  }
+
+  hire(employee){
+    this.reports.push(employee)
+  }
+
+  fire(index){
+    this.reports.splice([index],1)
+  }
+}
+
+var ken = new Manager('ken', 'last', 'email', '20')
+console.log(ken)
+ken.hire('Michael');
+ken.fire('Michael');
 
 
 ////////// PROBLEM 3 //////////
@@ -76,7 +111,55 @@
 */
 
 //Code Here
+class ProgressiveManager {
+  constructor(first_name, last_name, age, email){
+    this.first_name = first_name;
+    this.last_name = last_name;
+    this.age = age;
+    this.email = email;
+    this.reports = [];
+    this.title = 'Not a manager';
+    this.bonus = 0;
+  }
 
+  makeWidget() {
+    return `${this.first_name} ${this.last_name} Widget`
+  }
+
+  hire (...newEmployee) {
+    this.reports.push(newEmployee)
+    this.updateTitle()
+
+  fire(index){
+    this.reports.splice([index],1)
+    this.bonus += 100;
+    this.updateTitle()
+  }
+
+  // 0 : Not a manager
+  // 1-3 : Barely Manager
+  // 4-10 : Mostly Manager
+  // 11-50 : Manager
+  // 51-100 : Manager Plus
+  // 101+ : Bestest Manager
+
+
+
+updateTitle(){
+var titleStatus = this.reports.length
+if(titleStatus === 0)this.title = "Not a manger"
+else if (titleStatus <= 3)this.title = 'Barely Manager'
+else if (titleStatus <= 10)this.title = 'Mostly Manager'
+else if (titleStatus <= 50)this.title = 'Manager'
+else if (titleStatus <= 100)this.title = 'Manager Plus'
+else if (titleStatus > 100)this.title = 'Bestest Manager'
+ }
+}
+
+var ken = new Manager('ken', 'last', 'email', 20)
+console.log(ken)
+ken.hire('Michael');
+ken.fire('Michael');
 
 
 ////////// PROBLEM 4 - Black Diamond //////////
@@ -101,18 +184,23 @@
         - This function returns a function that is called when the machine is done rebooting
         - It should set decrease wear_and_tear_count by 10, and set needs_reboot to false
 */
-
-class Machine {
-constructor(){
-this.widgets_made_count: 0;
-this.wear_and_tear_count: 0;
-this.needs_reboot: false;
+class Machine{
+  constructor (){
+    this.widgets_made_count = 0;
+    this.wear_and_tear_count = 0;
+    this.needs_reboot = false;
+  }
+makeWidgets(num){
+  this.widgets_made_count += num;
+  this.wear_and_tear_count = Math.floor(num/50)
 }
-
-makeWidgets(num) {
- this.widgets_made_count += num;
- this.wear_and_tear_count +=
+fixMachine(){
+   this.needs_reboot = true;
+}
+reboot(){
+  return function (){
+      this.needs_reboot = false
+      this.wear_and_tear_count -= 10
+  }.bind(this)
 }
 }
-
-
